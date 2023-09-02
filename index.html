@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <script src="jquery-3.7.0.min.js"></script>
+
+    <div id="show" class="container">
+
+    </div>
+
+    <script>
+        $(function() {
+            $.getJSON("contacts.json", function(data) {
+                console.log(data);
+                console.log(typeof data)
+                var content = '';
+
+                for ([key, val] of Object.entries(data)) {
+                    console.log(key, val);
+                    console.log(val.id);
+
+                    content += `
+                        <div class="card">
+                            <h1>${val.name}</h1>
+                            <h1>${val.phone}</h1>
+                        </div>
+                    `;
+
+                    $('#show').html(content);
+                }
+            })
+        })
+    </script>
+
+</body>
+<script src="main.js"></script>
+
+</html>
